@@ -1,0 +1,19 @@
+<h1>Boards</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Board Title</th>
+            <th scope="col">Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= @boards.each do |board|%>
+        <tr>
+            <th scope><%= board.name %> </th>
+            <th scope><%= board.text %> </th>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
