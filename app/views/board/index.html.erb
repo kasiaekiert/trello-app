@@ -9,10 +9,10 @@
         </tr>
     </thead>
     <tbody>
-        <%= @boards.each do |board|%>
+        <% @boards.each do |board|%>
         <tr>
-            <th scope><%= board.name %> </th>
-            <th scope><%= board.text %> </th>
+            <td scope><%= board.name %> </th>
+            <td scope><%= board.text %> </th>
         </tr>
         <% end %>
     </tbody>
