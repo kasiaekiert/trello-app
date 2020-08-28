@@ -1,0 +1,14 @@
+<%= render 'shared/errors', model_instance: @board %>
+
+<%= form_with model: @board, local:true do |f| %>
+    <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control", placeholder: "Board title" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :test, 'Description' %>
+        <%= f.text_area :text, class: "form-control", placeholder: "Text in board" %>
+    </div>
+    <%= f.submit 'Submit' %>
+
+<% end %>

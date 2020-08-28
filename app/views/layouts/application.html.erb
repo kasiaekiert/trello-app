@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+      <%= render "layouts/navbar" %>
+      <%= render "shared/notices" %>
+
+      <div class="container">
+        <%= yield %>
+      </div>
   </body>
 </html>
