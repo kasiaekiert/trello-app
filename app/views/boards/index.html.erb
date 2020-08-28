@@ -7,7 +7,9 @@
         <tr>
             <th scope="col">Board Title</th>
             <th scope="col">Text</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Lists:</th>
+
+            <th scope="col">Actions for Board: </th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +17,10 @@
         <tr>
             <td scope><%= board.title %> </th>
             <td scope><%= board.text %> </th>
+            <td scope><ul>
+                <% board.board_lists.list.each do |list| %>
+                <li><%= list.name %></li>
+                <% end %></ul> </th>
             <td scope><%= link_to 'Delete', board_path(board), method: :delete %> 
             <%= link_to 'Edit', edit_board_path(board), method: :get %> 
             <%= link_to 'Show', board_path(board) %> </td>

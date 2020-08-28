@@ -1,0 +1,26 @@
+<h1>Lists</h1>
+
+<%= link_to 'Add new board', new_board_path %>
+<%= link_to 'Add new list', new_list_path %>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">  </th>
+            <th scope="col"> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @boards.each do |list|%>
+        <tr>
+            <td scope><%= list.title %> </th>
+            <td scope><%= list.text %> </th>
+            <td scope><%= link_to 'Delete', list_path(list), method: :delete %> 
+            <%= link_to 'Edit', edit_list_path(list), method: :get %> 
+            <%= link_to 'Show', list_path(list) %> </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
