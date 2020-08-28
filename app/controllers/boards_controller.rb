@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: [:destroy, :show, :edit, :update]
   def index
     @boards = Board.all
   end
@@ -17,21 +18,17 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    @board = Board.find(params[:id])
     @board.destroy!
     redirect_to boards_path, notice: 'Board deleyed'
   end
 
   def show
-    @board = Board.find(params[:id])
   end
 
   def edit
-    @board = Board.find(params[:id])
   end
 
   def update
-    @board = Board.find(params[:id])
     if @board.update(title: params[:board][:title], text: params[:board][:text])
       redirect_to boards_path, notice: 'Board updated!'
     else
@@ -40,6 +37,10 @@ class BoardsController < ApplicationController
   end
 
   private
+
+  def set_board
+    @board = Board.find(params[:id])
+  end
 
   def create_params
     params.require(:board).permit(:title, :text)

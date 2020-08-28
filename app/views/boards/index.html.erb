@@ -15,10 +15,9 @@
         <tr>
             <td scope><%= board.title %> </th>
             <td scope><%= board.text %> </th>
-            <td scope><%= link_to 'Delete', board_path(board), method: :delete %> </th>
-            <td scope><%= link_to 'Edit', edit_board_path(board), method: :get %> </th>
-            <td scope><%= link_to 'Show', board_path(board) %> </th>
-
+            <td scope><%= link_to 'Delete', board_path(board), method: :delete %> 
+            <%= link_to 'Edit', edit_board_path(board), method: :get %> 
+            <%= link_to 'Show', board_path(board) %> </td>
         </tr>
         <% end %>
     </tbody>
