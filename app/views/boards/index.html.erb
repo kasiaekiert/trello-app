@@ -1,0 +1,26 @@
+<h1>Boards</h1>
+
+<%= link_to 'Add new board', new_board_path %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Board Title</th>
+            <th scope="col">Text</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @boards.each do |board|%>
+        <tr>
+            <td scope><%= board.title %> </th>
+            <td scope><%= board.text %> </th>
+            <td scope><%= link_to 'Delete', board_path(board), method: :delete %> </th>
+            <td scope><%= link_to 'Edit', edit_board_path(board), method: :get %> </th>
+            <td scope><%= link_to 'Show', board_path(board) %> </th>
+
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
