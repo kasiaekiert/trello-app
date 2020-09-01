@@ -18,9 +18,9 @@
             <td scope><%= board.title %> </th>
             <td scope><%= board.text %> </th>
             <td scope><ul>
-                <% board.board_lists.list.each do |list| %>
-                <li><%= list.name %></li>
-                <% end %></ul> </th>
+                <%# <% board.board_lists.list.each do |list| %>
+                <%# <li><%= list.name %></li> %>
+                <%# <% end %></ul> </th> %> %>
             <td scope><%= link_to 'Delete', board_path(board), method: :delete %> 
             <%= link_to 'Edit', edit_board_path(board), method: :get %> 
             <%= link_to 'Show', board_path(board) %> </td>

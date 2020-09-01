@@ -11,8 +11,9 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(create_params)
+    @list.board_id = params[:board_id]
     if @list.save
-      redirect_to lists_path, notice: 'list created'
+      redirect_to boards_path, notice: 'list created'
     else
       render :new
     end

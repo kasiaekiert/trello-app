@@ -6,6 +6,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @board.list_id = @list.id
   end
 
   def create
