@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
 
     def new
-        @board = Board.new
+        @list = List.new
     end
 
     def create
