@@ -1,0 +1,9 @@
+<%= render 'shared/errors', model_instance: @list %>
+
+<%= form_with model: @list, local:true do |f| %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    </div>
+    <%= f.submit 'Submit' %>
+<% end %>
