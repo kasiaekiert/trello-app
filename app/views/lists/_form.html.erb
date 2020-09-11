@@ -1,9 +1,11 @@
 <%= render 'shared/errors', model_instance: @list %>
 
-<%= form_with model: @list, local:true do |f| %>
+<%= form_with(model: [ @board, @list ], local:true) do |f| %>
     <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
     </div>
+    <%= f.hidden_field :board_id %>
+    <%= hidden_field_tag :board_id %>
     <%= f.submit 'Submit' %>
 <% end %>
