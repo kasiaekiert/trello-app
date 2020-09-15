@@ -16,8 +16,18 @@ class ListsController < ApplicationController
     end
 
     def edit
-        @board = Board.find(params[:id])
+        @board = Board.find(params[:board_id])
         @list = @board.lists.find_by(params[:id])
+    end
+
+    def update
+        @board = Board.find(params[:board_id])
+        @list = @board.lists.find_by(params[:id])
+          if @list.update(name: params[:list][:name])
+            redirect_to boards_path(@board), notice: 'List name changed!'
+          else
+            render :edit
+          end
     end
 
 end
