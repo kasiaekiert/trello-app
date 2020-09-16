@@ -34,8 +34,11 @@ class ListsController < ApplicationController
 
     private
 
-    def find_board_list
+    def set_board
         @board = Board.find(params[:board_id])
+    end
+
+    def set_list
         @list = @board.lists.find_by(params[:id])
     end
 
