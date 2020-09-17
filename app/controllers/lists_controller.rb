@@ -1,13 +1,12 @@
 class ListsController < ApplicationController
-    before_action :find_board_list, only: [:edit, :update, :destroy] 
+    before_action :set_board, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_list, only: [:edit, :update, :destroy] 
 
     def new
-        @board = Board.find(params[:board_id])
         @list = @board.lists.new
     end
 
     def create
-        @board = Board.find(params[:board_id])
         @list = @board.lists.create(create_params)
         if @list.save
             redirect_to board_path(@board), notice: 'List created'
@@ -20,7 +19,7 @@ class ListsController < ApplicationController
     end
 
     def update
-          if @list.update(name: params[:list][:name])
+          if @list.update_attributes
             redirect_to boards_path(@board), notice: 'List name changed!'
           else
             render :edit
@@ -28,8 +27,11 @@ class ListsController < ApplicationController
     end
 
     def destroy
-        @list.destroy!
-        redirect_to boards_path(@board), notice: 'List deleyed'
+        if @list.destroy!
+            redirect_to boards_path(@board), notice: 'List deleyed'
+        else
+            render boards_path(@board), notice: 'Sth went wrong, list is still alive'
+        end
     end
 
     private
@@ -44,6 +46,10 @@ class ListsController < ApplicationController
 
     def create_params
         params.require(:list).permit(:name)
+    end
+
+    def update_params
+        params.update(name: params[:list][:name])
     end
 
 
