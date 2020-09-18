@@ -27,7 +27,7 @@ class ListsController < ApplicationController
     end
 
     def destroy
-        if @list.destroy!
+        if @list.destroy
             redirect_to boards_path(@board), notice: 'List deleyed'
         else
             render boards_path(@board), notice: 'Sth went wrong, list is still alive'
@@ -41,7 +41,7 @@ class ListsController < ApplicationController
     end
 
     def set_list
-        @list = @board.lists.find_by(params[:id])
+        @list = @board.lists.find(params[:id])
     end
 
     def list_params
