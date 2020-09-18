@@ -7,7 +7,7 @@ class ListsController < ApplicationController
     end
 
     def create
-        @list = @board.lists.create(create_params)
+        @list = @board.lists.create(list_params)
         if @list.save
             redirect_to board_path(@board), notice: 'List created'
         else
@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     end
 
     def update
-          if @list.update(name: params[:list][:name])
+          if @list.update(list_params)
             redirect_to boards_path(@board), notice: 'List name changed!'
           else
             render :edit
@@ -44,7 +44,8 @@ class ListsController < ApplicationController
         @list = @board.lists.find_by(params[:id])
     end
 
-    def create_params
+    def list_params
         params.require(:list).permit(:name)
     end
+
 end
