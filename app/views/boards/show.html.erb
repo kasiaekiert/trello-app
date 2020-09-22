@@ -1,2 +1,12 @@
-<%= render 'form', board: @board %>
+ <h2> <%= @board.title %> </h2>
+  <ul>
+    <li><%= @board.text %></li>
+      <% @board.lists.each do |list| %>
+        <li><%= list.name || '(empty)' %><br>
+        <%= link_to 'Edit List', edit_board_list_path(list.board, list), method: :get %> <br>
+        <%= link_to 'Delete List', board_list_path(list.board, list), method: :delete %> <br></li>
+      <% end %>
+  </ul>
+
+<%= link_to 'Add List', new_board_list_path(@board) %> <br>
 <%= link_to 'Back', root_path %>
