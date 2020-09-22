@@ -1,0 +1,2 @@
+class TicetsController < ApplicationController
+end
